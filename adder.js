@@ -1,10 +1,8 @@
 const adder = async (previous,next)=> {
     return new Promise(resolve => setTimeout(
         resolve(previous+next)
-        , 10));
-    
-}
-  
+        , 10));    
+} 
 
 const forEachAsync= async (nums)=>{
     temp=0
