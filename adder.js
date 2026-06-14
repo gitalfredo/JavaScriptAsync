@@ -2,7 +2,7 @@
 const adder = async (previous,next)=> {
     return new Promise(resolve => setTimeout(
         resolve(previous+next)
-        , 10));    
+        , next));                // Timout changes
 } 
 //Async for each loop 
 const forEachAsync= async (nums)=>{
@@ -22,4 +22,4 @@ const iterateNumbers = async (nums) => {
     console.log(total)
 }
 
-iterateNumbers([1,2,3,5,8,13,21])   //Asynchronously iterates, adding numbers, waiting 10 ms.
+iterateNumbers([1,2,3,5,8,13,21])   //Asynchronously iterates, adding numbers, waiting by the given number in ms
