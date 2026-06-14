@@ -1,3 +1,3 @@
 ﻿# JavaScriptAsync
-Promise and Timeout to asynchronously iterate through a list of numbers with a delay of 10 ms each time, showing the accumulated value once the 
+Promise and Timeout to asynchronously iterate through a list of numbers with a delay given by the number being added, showing the accumulated value once the 
 operation completes.
