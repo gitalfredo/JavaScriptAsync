@@ -1,25 +1,26 @@
 //Promise with set timout
-const adder = async (previous,next)=> {
-    return new Promise(resolve => setTimeout(
-        resolve(previous+next)
-        , next));                // Timout changes
-} 
-//Async for each loop 
-const forEachAsync= async (nums)=>{
-    temp=0                  //Accumulator
-    
-    await nums.forEach((n) => {    
-        adder(temp,n)
-        .then((r)=>{temp+=r})       //Accumulate results (addition)
-    })
-    return temp
-}
- 
-//Asuync function takes a list of numbers
-const iterateNumbers = async (nums) => {  
-   
-    let total=await forEachAsync(nums)    
-    console.log(total)
-}
-
-iterateNumbers([1,2,3,5,8,13,21])   //Asynchronously iterates, adding numbers, waiting by the given number in ms
+const adder = (prev,ms)=> new Promise((resolve) => setTimeout(
+	()=>resolve(prev+ms)      // Adds to the current value, the next value
+	, ms));
+		
+	 
+	const forEachAsync= async (nums)=>{
+		let result = 0 //Accummulator stores each operation result
+		
+		for (const num of nums) {
+			result = await adder(result,num);			
+			console.log(result);
+		}
+		
+		return result
+	}
+	 
+	//Function takes a list 
+	const iterateNumbers = async (nums) => {  
+	   
+		let total=await forEachAsync(nums)    
+		console.log(total)
+		
+	}
+    // Note: Use bigger numbers to better notice the wait
+	iterateNumbers([1,2,3,5,8,13,21])       //Synchronously iterates, adding numbers, waiting by the given number in ms
